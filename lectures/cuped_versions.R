@@ -43,6 +43,8 @@ mod_3 = lm_robust(data = data, y ~ group, se_type = 'HC3')
 coef(mod_3)
 confint(mod_3)
 
+# theory: unbiased point estimator, asy correct CI
+
 
 # way 4. regression with covariate + classic ci
 mod_4 = lm(data = data, y ~ group + x)

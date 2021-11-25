@@ -1,2 +1,10 @@
+*.aux
+*.bcf
+*.blg
+*.run.xml
+*.synctex.gz
+*.xdv
+*.log
+*.out
 *.fls
 .DS_Store

@@ -1,0 +1,272 @@
+% arara: xelatex
+%!TEX TS-program = xelatex
+
+\documentclass[12pt]{article}
+
+% \usepackage[english, russian]{babel} % выбор языка для документа
+% \usepackage[utf8]{inputenc} % задание utf8 кодировки исходного tex файла
+% \usepackage[X2,T2A]{fontenc}        % кодировка
+
+
+\usepackage{polyglossia}
+\usepackage{fontspec}         % пакет для подгрузки шрифтов
+
+
+\setmainlanguage{english}
+\setotherlanguages{english}
+
+% \setmainfont{Times New Roman}       % задаёт основной шрифт документа
+\setmainfont{Linux Libertine O} % or Helvetica, Arial, Cambria
+% why do we need \newfontfamily:
+% http://tex.stackexchange.com/questions/91507/
+\newfontfamily{\cyrillicfonttt}{Linux Libertine O}
+
+
+\usepackage{physics}
+
+\usepackage{verbatim}
+\RequirePackage{lastpage}
+\RequirePackage{epsfig}
+\RequirePackage{graphicx}
+\RequirePackage{float}
+\RequirePackage{subfigure}
+%\RequirePackage{overcite}
+\RequirePackage{psfrag}
+\RequirePackage{ifthen}
+\RequirePackage{amsmath}
+\RequirePackage{xcolor}
+\RequirePackage{hyperref}
+%\RequirePackage{cleveref}
+
+\usepackage{indentfirst}
+
+
+\usepackage[top=2cm, left=1.2cm, right=1.2cm, bottom=2cm]{geometry} % размер текста на странице
+
+%\textwidth=6.5in
+%\textheight=9in
+%\topmargin=-0.25in
+%\headheight=0in
+%\headsep=0in
+%\topskip=0in
+%\oddsidemargin=0in
+%\evensidemargin=0in
+
+\newcommand{\PHNote}[1]{\ColorNote{red}{PH}{#1}}
+
+%\renewcommand{\maketitle}{%
+%	\begin{center}
+%		\noindent{\bf  HSE and University of London Double Degree Programme in Data Science and Business Analytics}\\\vspace{10pt} 
+%		\noindent{\bf \large  \textit{Statistical Methods for Market Research}, 2021-2022 }\\\vspace{1pt}
+%	\end{center}
+%	\textbf{\textit{Lecturer:}} Boris Demeshev.
+%\textbf{\textit{Classteacher:}} Ksenia Kasianova.
+%	\begin{center}
+%		\noindent{\bf  \textit{Home assignment 1.} }\\
+%	\end{center}
+%	\vspace{0.2in}
+%}
+
+\usepackage{multirow}
+
+\usepackage[backend=biber, style=numeric-comp,
+	sorting=ynt,  
+	defernumbers=true,
+	 babel=other]{biblatex}
+
+\addbibresource{references.bib}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\renewcommand{\var}{\mathbb{V}}
+\newcommand{\1}{\mathbbm{I}}
+\newcommand{\heta}{\hat{\eta}}
+\newcommand{\hgamma}{\hat{\gamma}}
+\newcommand{\Bor}{\mathcal{B}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Xtn}{\tilde{X}^n}
+\newcommand{\clawn}{\underset{n\rightarrow
+		+\infty}{\Longrightarrow}} 
+\newcommand{\convn}{\underset{n\rightarrow
+		+\infty}{\longrightarrow}} 
+\newcommand{\p}{\mathbb{P}}
+\newcommand{\pperp}{\perp \! \! \! \perp}
+\newcommand{\Var}{\text{Var}}
+\newcommand{\lam}{\lambda}
+\newcommand{\convps}{\underset{n\rightarrow +\infty}{\overset{\text{p.s.}}{\longrightarrow}}}
+\newcommand{\convpsm}{\underset{m\rightarrow +\infty}{\overset{\text{p.s.}}{\longrightarrow}}}
+\newcommand{\convproba}{\underset{n\rightarrow +\infty}{\overset{\text{proba.}}{\longrightarrow}}}
+\newcommand{\convloi}{\underset{n\rightarrow +\infty}{\overset{\text{d}}{\longrightarrow}}}
+\newcommand{\convlp}{\underset{n\rightarrow +\infty}{\overset{L^p}{\longrightarrow}}}
+\newcommand{\convldeux}{\underset{n\rightarrow +\infty}{\overset{L^2}{\longrightarrow}}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\simU}{\sim \mathcal{U}([0;1])}
+\newcommand{\Yh}{\hat{Y}}
+\newcommand{\uh}{\hat{u}}
+\newcommand{\Yb}{\bar{Y}}
+\newcommand{\yb}{\bar{y}}
+\newcommand{\Xb}{\bar{X}}
+\newcommand{\uhb}{\bar{\hat{u}}}
+\renewcommand{\b}{\beta}
+
+\usepackage{enumitem}
+\setenumerate[1]{label={(\alph*)}} 
+
+
+
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools} % AMS
+\usepackage{icomma} 
+\mathtoolsset{showonlyrefs=true} % Показывать номера только у тех формул, на которые есть \eqref{} в тексте.
+%\usepackage{euscript}	 % Шрифт Евклид
+%\usepackage{mathrsfs} % Красивый матшрифт
+\usepackage{enumitem}
+\usepackage{siunitx}
+\usepackage{tikz} % To generate the plot from csv
+\usepackage{pgfplots}
+
+\usepackage{hyperref}
+
+%%% Заголовок
+
+% \newcommand{\latinword}[1]{\textsf{\itshape #1}}%
+
+
+\usepackage{indentfirst}
+\usepackage{fancyvrb}
+
+
+\usepackage{fancyhdr} % весёлые колонтитулы
+\pagestyle{fancy}
+\lhead{Statistics 4MR}
+\chead{}
+\rhead{HA}
+\lfoot{2021-2022}
+\cfoot{}
+\rfoot{\thepage/\pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+
+\usepackage{mathtools}
+
+
+%\usepackage[noae]{Sweave}
+
+\tolerance=10000
+\emergencystretch=\maxdimen
+\widowpenalty=10000
+\clubpenalty=10000 
+%\hyphenpenalty=10000
+%\hbadness=10000
+
+\usepackage{graphicx}
+\usepackage{float} 
+
+\newcounter{rtaskno}
+\DeclareRobustCommand{\rtask}[1]{%
+	\refstepcounter{rtaskno}%
+	\thertaskno\label{#1}}
+
+
+\usepackage{comment}
+%Uncomment below to hide/show solution
+%\includecomment{teacher}
+\excludecomment{teacher}
+
+
+\begin{document}
+% \maketitle
+	
+
+
+
+\textbf{Problem \rtask{1}. A/B testing. (25 points)}
+
+Consider two samples with sizes $n_x = n_y=50$ from:
+\begin{itemize}
+	\item two normal distributions with unit variances, means $\mu_x = 0$ and varying $\mu_y$;
+	\item two normal distributions with variances one and two, means $\mu_x = 0$ and varying $\mu_y$;
+	\item any other distributions (not normal) of your choice. 
+	Here you should vary one parameter — location of the second distribution.
+\end{itemize}
+
+We would like to test the hypothesis $H_0$: $\mu_x = \mu_y$ against $H_a$: $\mu_x \neq \mu_y$ at nominal significance level $5\%$.
+\begin{enumerate}
+	\item For varying $\mu_y$ calculate the real significance level and real power 
+	testing $H_0$ with $t$-test, Welch test and Mann-Whitney test. 
+	Use 10000 simulations for each $\mu_y$. 
+	\item For each case provide a plot that describes how 
+	real significance level and real power do change with $\mu_y$.
+	\item Which test is more appropriate in each case?
+	\item How will the answers change with $n_x = n_y =1000$?
+	
+\end{enumerate}
+
+\begin{teacher}
+	
+\textit{Solution:} 
+
+	
+\end{teacher}
+
+
+
+
+
+\textbf{Problem \rtask{1}. (20 points)}
+
+
+Use the dataset \texttt{SIC33.csv} with the following variables:
+\begin{itemize}
+	\item \textit{output} — Value added.
+	\item  \textit{labor} — Labor input.
+	\item  \textit{capital} — Capital stock.
+\end{itemize}
+
+Obtain OLS estimates of the model 
+\[
+\ln Y_i = \beta_1 + \beta_K \ln K_i + \beta_L \ln L_i  + u_i.
+\] 
+Use the paired bootstrap with $B = 10000$.
+
+\begin{enumerate}
+	\item Obtain a bootstrap estimate of the standard error of $\hat \beta_K$. 
+	
+	\item Use this standard error estimate to test $H_0$: $\beta_K = 0$ against $H_a$: $\beta_K \neq 0$.
+	
+	\item Provide three 95\% CI for $\beta_K$: classic, heteroskedasticity robust (HC1), naive bootstrap.
+% What happens if $u$ is heteroskedastic? 
+	
+	\item Provide 95\% bootstrap CI for the product $\beta_K \cdot \beta_L$.
+	
+	\item Estimate the same model using median (absolute value) regression. 
+	The target function is 
+	\[
+	\min_{\hat\beta} \sum_{i=1}^n \abs{\ln Y_i  - \ln \hat Y_i}.
+	\]
+	Provide 95\% bootstrap CI for each $\beta$. 
+
+\end{enumerate}
+
+
+
+
+
+
+
+\begin{teacher}
+	
+\textit{Solution:} 
+
+	
+\end{teacher}
+
+
+
+
+
+
+
+\end{document}
+
