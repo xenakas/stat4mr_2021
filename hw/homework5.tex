@@ -110,7 +110,7 @@
 \renewcommand{\b}{\beta}
 
 \usepackage{enumitem}
-\setenumerate[1]{label={(\alph*)}} 
+% \setenumerate[1]{label={(\alph*)}} 
 
 
 
@@ -163,12 +163,6 @@
 \usepackage{graphicx}
 \usepackage{float} 
 
-\newcounter{rtaskno}
-\DeclareRobustCommand{\rtask}[1]{%
-	\refstepcounter{rtaskno}%
-	\thertaskno\label{#1}}
-
-
 \usepackage{comment}
 %Uncomment below to hide/show solution
 %\includecomment{teacher}
@@ -179,9 +173,10 @@
 % \maketitle
 	
 
+\begin{enumerate}
 
 
-\textbf{Problem \rtask{1}. A/B testing. (25 points)}
+\item  A/B testing. (25 points)
 
 Consider two samples with sizes $n_x = n_y=50$ from:
 \begin{itemize}
@@ -214,7 +209,7 @@ We would like to test the hypothesis $H_0$: $\mu_x = \mu_y$ against $H_a$: $\mu_
 
 
 
-\textbf{Problem \rtask{1}. (20 points)}
+\item Bootstrap (25 points)
 
 
 Use the dataset \texttt{SIC33.csv} with the following variables:
@@ -261,6 +256,70 @@ Use the paired bootstrap with $B = 10000$.
 
 	
 \end{teacher}
+
+
+
+\newpage
+\item CUPED. (25 points)
+
+The data generating process is:
+\[
+\begin{cases}
+n = 200; \\
+x_i \sim \mathcal{N}(1; 1); \\
+(u_i\mid x_i) \sim \mathcal{N}(0; 1); \\
+(d_i \mid x_i, u_i) \sim \mathrm{Bernoulli}(1/2); \\
+y_i = 3 + 2 x_i^2 + \delta d_i + u_i \\
+\end{cases}
+\]
+
+Here $x_i$ is a characterestic of an individual, $d_i = 1$ for those in experimental group, 
+and $d_i=0$ for those in control group, $y_i$ is the target variable. 
+We are interested in estimating the effect $\delta$. 
+Consider three strategies:
+
+\begin{itemize}
+	\item SIMPLE. Regression with a standard confidence interval for $\delta$:
+	\[
+		\hat y_i = \hat \beta_1 + \hat \delta d_i;
+	\]
+	\item CUPED-A. Two stages:
+	\begin{enumerate}
+		\item[Step I.] Estimate regression and calculate residual $r_i = y_i - \hat y_i$.
+		\[
+			\hat y_i = \hat \beta_1 + \hat \beta_2 x_i;
+		\]
+		\item[Step II.] Regress $r_i$ on $d_i$ and build a standard CI for $\delta$:
+		\[
+		\hat r_i = \hat \alpha + \hat \delta d_i.	
+		\]
+	\end{enumerate}
+	\item CUPED-B. Two stages:
+	\begin{enumerate}
+		\item[Step I.] Estimate regression and calculate quasi-residual $r_i = y_i - (\hat\beta_1 + \hat\beta_2 x_i)$.
+		\[
+			\hat y_i = \hat \beta_1 + \hat \beta_2 x_i + \hat \delta d_i;
+		\]
+		\item[Step II.] Regress $r_i$ on $d_i$ and build a standard CI for $\delta$:
+		\[
+		\hat r_i = \hat \alpha + \hat \delta d_i.	
+		\]
+	\end{enumerate}
+\end{itemize}
+
+Your task is:
+\begin{enumerate}
+	\item Simulate the data set 1000 times for each of these deltas: $\delta = 0$, $\delta = 0.1$, $\delta = 1$, $\delta = 10$.
+	\item Calculate 95\% nominal CI according to SIMPLE, CUPED-A and CUPED-B.
+	\item For $\delta =0$ provide the histogram of p-values to check $H_0$: $\delta = 0$ agains $\delta \neq 0$. 
+	\item What is the actual coverage probability for each method for each delta?
+	\item For each delta for each method find: the average length of the interval, 
+	the number of times the interval was the shortest among three methods considered. 
+\end{enumerate}
+
+
+\end{enumerate}
+
 
 
 
