@@ -188,9 +188,8 @@ Consider two samples with sizes $n_x = n_y=50$ from:
 
 We would like to test the hypothesis $H_0$: $\mu_x = \mu_y$ against $H_a$: $\mu_x \neq \mu_y$ at nominal significance level $5\%$.
 \begin{enumerate}
-	\item For varying $\mu_y$ calculate the real significance level and real power 
-	testing $H_0$ with $t$-test, Welch test and Mann-Whitney test. 
-	Use 10000 simulations for each $\mu_y$. 
+	\item For $\mu_y =0$ calculate the real significance level of $t$-test, Welch test and Mann-Whitney test. 
+	Choose a grid of positive $\mu_y$ and calculate real power of these tests. Use 10000 simulations for each $\mu_y$.  
 	\item For each case provide a plot that describes how 
 	real significance level and real power do change with $\mu_y$.
 	\item Which test is more appropriate in each case?
