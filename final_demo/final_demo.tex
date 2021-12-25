@@ -91,7 +91,7 @@
 
 Rules: online test in lms, no proctoring, 20 questions, 60 minutes, only numerical answers are checked, 
 two digits after decimal point are requested, 
-use anything you want (calculators, python code, google, \ldots), don't cheat. 
+use anything you want (calculators, python/r code, google, \ldots), don't cheat. 
 
 
 \begin{enumerate}
@@ -106,10 +106,20 @@ use anything you want (calculators, python code, google, \ldots), don't cheat.
     I generate one naive bootstrap sample $X_1^*$, \ldots, $X_{100}^*$. 
 
     Find the variance $\Var(X_1^*)$.
-    \item (welch)  
-    \item (welch)
+    \item (welch) We have data for an $AB$-experiment $\bar X_a = 10$, $\bar X_b = 12$, 
+    $n_a = 20$, $n_b = 30$, $\sum (X_i^a - \bar X_a)^2 = 100$, $\sum (X_i^b - \bar X_b)^2 = 200$.
+
+    Calculate the standard error of $\bar X_a - \bar X_b$ for the Welch test. 
+
+    \item (welch) Assume that $X_i$ are independent and identically normally distributed $\cN(\mu, \sigma^2)$, 
+    sample size is $n=10$. 
+    
+    Find $\Var(\sum (X_i - \bar X)^2 / (n - 1))$.
+    
     \item (mw test)
     \item (mw test)
+    \item (cuped)
+    \item (cuped)
     \item (matching)
     \item (matching)
     \item (multiple comparison)
