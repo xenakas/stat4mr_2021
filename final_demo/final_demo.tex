@@ -33,10 +33,10 @@
 
 \usepackage{fancyhdr} % весёлые колонтитулы
 \pagestyle{fancy}
-\lhead{Stochastic Calculus 2021}
+\lhead{Final demo}
 \chead{DON'T PANIC}
-\rhead{2021-12-21}
-\lfoot{Short rules: 120 minutes, A4 cheat sheet and calculator are allowed, $W_t$ always denotes a Wiener process.}
+\rhead{2021-12-27}
+\lfoot{}
 \cfoot{}
 \rfoot{}
 \renewcommand{\headrulewidth}{0.4pt}
@@ -204,13 +204,43 @@ use anything you want (calculators, python/r code, google, \ldots), don't cheat.
 
 
     \item (multiple comparison) I do 100 independent tests at significance level 5\%. 
-    The null hypothesis for all 100 tests is actually false, but I don't know this. 
+    The null hypothesis for all 100 tests is actually true, but I don't know this. 
     
     What is the probability that I will receive at least 2 significant results?
     
-    \item (multiple comparison)
-    \item (sample size)
-    \item (sample size)
+    \item (multiple comparison) I have 100 hypothesis with independent statistics. 
+    The null hypothesis for all 100 cases is actually true, but I don't know this. 
+    
+    I calculate all p-values. 
+    If the two lowes p-value are both lower than $0.05$ I wrongly conclude that not all $H_0$ are true. 
+    Otherwise I correctly conclude that all $H_0$ are true. 
+
+    What is the probability that I will get the correct conclusion?
+    
+    \item (sample size) My target variable $y$ is continuous. 
+    I have two stratas of respondents with preliminary estimates $\hat\sigma_s$, 
+    total strata size $N_s$, and cost per one observation $c_s$.
+
+    My total budget is 5000. I wish to estimate $\E(y_i)$. 
+    
+    How much observations I should sample from the first strata?
+
+    \begin{tabular}{cccc}
+        \toprule
+        Strata $s$ & $\hat\sigma_s$ & $N_s$ & $c_s$ \\
+        \midrule
+        1 & 20 & $10^5$ & 4 \\
+        2 & 30 & $2\cdot 10^5$ & 1\\
+        \bottomrule
+    \end{tabular}
+    
+    
+    \item (sample size) My target variable is binary and I wish 
+    minimal detectable effect equal to $0.01$, probability of I-error  not greater than $0.02$, 
+    probability of II-error not greater than $0.10$, control and experimental group of the same size equal to $n$.
+
+    What is minimal value of $n$?
+
     \item (contingency table) I eated 10 M\&Ms: 2 green, 1 red, 4 yellow, 1 green, 2 red.  
     
     Only these three colors are possible. I assume that yellow and green colors are equally probable.  
