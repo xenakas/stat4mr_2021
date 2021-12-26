@@ -48,6 +48,7 @@
 \DeclareMathOperator{\E}{\mathbb{E}}
 \DeclareMathOperator{\Var}{Var}
 \DeclareMathOperator{\Corr}{Corr}
+\DeclareMathOperator{\plim}{plim}
 \DeclareMathOperator{\pCorr}{pCorr}
 
 
@@ -126,8 +127,37 @@ use anything you want (calculators, python/r code, google, \ldots), don't cheat.
 
     What is the probability that the running times of the runner $A$ will get the ranks 1 and 5?
     
-    \item (cuped)
-    \item (cuped)
+    \item (cuped) Consider three variables: target variable $y_i$, predictior $x_i$ and indicator of treatment $z_i \in \{0,1\}$.
+    The treatment $z_i$ was assigned independently of $x_i$, total $n=200$. 
+
+    The matrix of all cross products (sums of the form $\sum a_i b_i$) $C$ is provided. 
+    The order of variables is $y$, $1$, $x$ and $z$. For example, $\sum 1 \times y_i = 10$:
+
+    \[
+    C = \begin{pmatrix}
+        500 & 10 & 2 & 8 \\
+        10 & 200 & 100 & 100 \\
+        2 &  100 & 100 &  40   \\
+        8 &  100 & 40  & 100 \\
+    \end{pmatrix}    
+    \]
+    
+    Consider CUPED with first regression given by $\hat y_i = \hat\alpha_1 + \hat\alpha_2 x_i$ with residuals $r_i = y_i - \hat y_i$.
+
+    What is the cross-product $\sum r_i z_i$?
+
+
+    \item (cuped) Consider three variables: target variable $y_i$, predictior $x_i$ and indicator of treatment $z_i \in \{0,1\}$.
+    The treatment $z_i$ was designed to be independent of $x_i$, but in fact $x_i = f_i \cdot (1 + 0.01 z_i)$.
+
+    We suppose that $z_i$ are Bernoulli $0.5$, $f_i \sim \cN(1;1)$ and they are independent.
+
+    Find the probability limit 
+    \[
+    \plim \frac{\sum (x_i - \bar x)(z_i - \bar x)}{n-1}.    
+    \]
+
+
     \item (matching)
     \item (matching)
     \item (multiple comparison)
@@ -153,8 +183,21 @@ use anything you want (calculators, python/r code, google, \ldots), don't cheat.
 
     Calculate $LR$ statistic that checks the hypothesis that $A$ and $B$ are independent against dependency alternative. 
 
-    \item (anova 1+2)
-    \item (anova 1+2)
+    \item (anova 1+2) Vasiliy loves to eat shaurma. He has three local shaurma dealers. Vasiliy bought 7 shaurmas from each dealer. 
+    and measured their weight. He would like to test the hypothesis that mean weight is the same for all dealers. 
+
+    Total sum of squares is 1000, between sum of squares is 500. 
+
+    Calculate the $F$-statistic to test the hypothesis.
+    
+    \item (anova 1+2) Vasiliy loves to eat shaurma. He has three local shaurma dealers with two types of shaurma.  
+    Vasiliy bought 7 shaurmas of each type from each dealer 
+    and measured their weight. He would like to test the hypothesis that weight depenends on the shaurma type and not on the dealer.
+    He assumes no interaction.  
+
+    Total sum of squares is 1000, sum of squares explained by dealers is 300, sum of squares explained by type is 500. 
+
+    Calculate the $F$-statistic to test the hypothesis.
 
     \item (partial correlation) The variables $X$ and $Y$ are jointly normal with zero means,
 unit variances and $\Corr(X, Y) = 0.8$. 
