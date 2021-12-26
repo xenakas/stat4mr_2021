@@ -98,7 +98,7 @@ use anything you want (calculators, python/r code, google, \ldots), don't cheat.
 \begin{enumerate}
     \item (bootstrap) I have a sample $X_1$, \ldots, $X_{100}$.
     
-    I generate one naive bootstrap sample $X_1^*$, \ldots, $X_{100}^*$. 
+    I generate one naive bootstrap sample $X^{*}_{1}$, \ldots, $X^{*}_{100}$. 
 
     What is the probability that the first observation will be present in the bootstrap sample 2 times or more?
 
@@ -150,16 +150,59 @@ use anything you want (calculators, python/r code, google, \ldots), don't cheat.
     \item (cuped) Consider three variables: target variable $y_i$, predictior $x_i$ and indicator of treatment $z_i \in \{0,1\}$.
     The treatment $z_i$ was designed to be independent of $x_i$, but in fact $x_i = f_i \cdot (1 + 0.01 z_i)$.
 
-    We suppose that $z_i$ are Bernoulli $0.5$, $f_i \sim \cN(1;1)$ and they are independent.
+    We suppose that $z_i$ are Bernoulli with $p=0.5$, $f_i \sim \cN(1;1)$ and they are independent.
 
     Find the probability limit 
     \[
     \plim \frac{\sum (x_i - \bar x)(z_i - \bar x)}{n-1}.    
     \]
 
+    \item (matching) Vasiliy uses knn with 1 neighbour to match observations. 
+    Here $z$ is treatment indicator, $x$ is predictor and $y$ is target variable. 
 
-    \item (matching) 
-    \item (matching)
+    \begin{tabular}{cccc}
+    \toprule
+    $i$ & $y_i$ & $x_i$ & $z_i$ \\
+    \midrule
+    1 & 6 & 6 & 0 \\
+    2 & 6 & 1 & 0 \\
+    3 & 6 & 3 & 0 \\
+    4 & 6 & 7 & 0 \\
+    5 & 6 & 2 & 1 \\
+    6 & 6 & 5 & 1 \\
+    7 & 6 & 9 & 1 \\        
+    8 & 6 & 1 & 1 \\
+    \bottomrule
+    \end{tabular}
+
+    Which indivial will be matched with individual number 3?
+    
+
+    \item (matching) The indicator of treatment $z$ is Bernoulli with $p=0.5$. 
+    The conditional distribution of variables $y(0)$ (hypothetical outcome if $z =0$) and $y(1)$ (hypothetical outcome if $z=1$) 
+    is given in two tables
+
+    \begin{tabular}{ccc}
+    \toprule
+    Condition $z = 0$ & $y(0) = 0$ & $y(0) = 1$ \\
+    \midrule
+    $y(1)=0$ & 0.1 & 0.5 \\
+    $y(1)=1$ & 0.3 & 0.1 \\
+    \bottomrule
+    \end{tabular}
+
+    \begin{tabular}{ccc}
+        \toprule
+        Condition $z = 1$ & $y(0) = 0$ & $y(0) = 1$ \\
+        \midrule
+        $y(1)=0$ & 0.4 & 0.1 \\
+        $y(1)=1$ & 0.2 & 0.3 \\
+        \bottomrule
+    \end{tabular}
+
+    What is the average treatment effect $\E(y(1) = y(0))$?
+
+
     \item (multiple comparison) I do 100 independent tests at significance level 5\%. 
     The null hypothesis for all 100 tests is actually false, but I don't know this. 
     
